@@ -324,5 +324,5 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bo0dy")
 animation = &"attack"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.889519
+frame = 3
+frame_progress = 0.305918

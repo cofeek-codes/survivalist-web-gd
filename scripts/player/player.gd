@@ -8,16 +8,21 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation_player: AnimatedSprite2D = get_node("AnimationPlayer")
 var is_moving = false
+var is_attacking = false
 
 func _physics_process(delta):
 	if velocity.y < 0: # falling
 		animation_player.play('fall')		
-	if !is_moving && is_on_floor():
+	if !is_moving && !is_attacking && is_on_floor():
 		animation_player.play('idle')
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
+	# Handle Attack.
+	if Input.is_action_just_pressed('attack'):
+		print('attack pressed')
+		is_attacking = true
+#		TODO: attack animation frames
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		print('jump pressed')
